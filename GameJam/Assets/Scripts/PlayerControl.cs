@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     public float speed = 5.0f;
-    public float jumpSpeed = 5.0f;
+    public float jumpSpeed = 25.0f;
     
     private Rigidbody2D _rigidbody2D;
     private bool isOnGround;
@@ -36,14 +36,26 @@ public class PlayerControl : MonoBehaviour
         Vector2 position = _rigidbody2D.position;
         Debug.Log(position);
         
-        float deltaX = speed * Input.GetAxis("Horizontal") * Time.deltaTime;
-        float deltaY = 0;
+        //float deltaX = speed * Input.GetAxis("Horizontal") * Time.deltaTime;
+        float velosityX = _rigidbody2D.velocity.x;
+        float velosityY = _rigidbody2D.velocity.y;
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            velosityX = speed;
+        }
+        
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            velosityX = -speed;
+        }
+        
         if (Input.GetKey(KeyCode.Space) && isOnGround)
         {
-            deltaY = jumpSpeed;
+            velosityY = jumpSpeed;
         }
-        position = new Vector2(position.x + deltaX, position.y);
-        _rigidbody2D.position = position;
-        _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, _rigidbody2D.velocity.y + deltaY);
+        Debug.Log(velosityX);
+        //position = new Vector2(position.x + deltaX, position.y);
+        //_rigidbody2D.position = position;
+        _rigidbody2D.velocity = new Vector2(velosityX, velosityY);
     }
 }

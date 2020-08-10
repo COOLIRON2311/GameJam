@@ -7,7 +7,7 @@ public class FireSpawner : MonoBehaviour
 {
 
     [SerializeField] private GameObject fire;
-    [SerializeField] private Camera camera;
+    [SerializeField] private Camera _camera;
     private GameObject _fire;
     private CameraController _cameraController;
     
@@ -15,7 +15,7 @@ public class FireSpawner : MonoBehaviour
 
     void Start()
     {
-        _cameraController = camera.GetComponent<CameraController>();
+        _cameraController = _camera.GetComponent<CameraController>();
         _cameraController.SetFollowing(this.gameObject);
     }
 
