@@ -34,7 +34,7 @@ public class PlayerControl : MonoBehaviour
         }
 
         Vector2 position = _rigidbody2D.position;
-        Debug.Log(position);
+        //Debug.Log(position);
         
         //float deltaX = speed * Input.GetAxis("Horizontal") * Time.deltaTime;
         float velosityX = _rigidbody2D.velocity.x;
@@ -53,7 +53,7 @@ public class PlayerControl : MonoBehaviour
         {
             velosityY = jumpSpeed;
         }
-        Debug.Log(velosityX);
+        //Debug.Log(velosityX);
         //position = new Vector2(position.x + deltaX, position.y);
         //_rigidbody2D.position = position;
         _rigidbody2D.velocity = new Vector2(velosityX, velosityY);
