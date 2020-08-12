@@ -68,6 +68,18 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void RemoveItem(string id)
+    {
+        if (_inventory.ContainsKey(id))
+        {
+            _inventory.Remove(id);
+        }
+        else
+        {
+            Debug.LogError("Trying to delete item that doesn't exist! " + id);
+        }
+    }
+
     public bool DoesItemExist(string id)
     {
         return _inventory.ContainsKey(id);
