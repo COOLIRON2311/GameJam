@@ -232,6 +232,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &136523281 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 250860113339229744, guid: 6b95230a1eff13a47a54fb99b77e93a0, type: 3}
+  m_PrefabInstance: {fileID: 250860114541787102}
+  m_PrefabAsset: {fileID: 0}
+--- !u!251 &136523282
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136523281}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 0
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &160587388
 GameObject:
   m_ObjectHideFlags: 0
@@ -3292,6 +3316,10 @@ PrefabInstance:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 250860113339229740, guid: 6b95230a1eff13a47a54fb99b77e93a0, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 250860113339229742, guid: 6b95230a1eff13a47a54fb99b77e93a0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -805,6 +805,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03947e3d0fbfbce499987c52737e4911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!251 &1029824444
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029824434}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 0
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &1355188807
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,6 +1257,14 @@ PrefabInstance:
       propertyPath: handFire
       value: 
       objectReference: {fileID: 896800133}
+    - target: {fileID: 250860113339229740, guid: 6b95230a1eff13a47a54fb99b77e93a0, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 12e5890ed654b714c96a2ef1b6b08247, type: 2}
+    - target: {fileID: 250860113339229740, guid: 6b95230a1eff13a47a54fb99b77e93a0, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 250860113339229742, guid: 6b95230a1eff13a47a54fb99b77e93a0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.46365926
@@ -1281,6 +1308,10 @@ PrefabInstance:
     - target: {fileID: 250860113339229742, guid: 6b95230a1eff13a47a54fb99b77e93a0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 250860113339229743, guid: 6b95230a1eff13a47a54fb99b77e93a0, type: 3}
+      propertyPath: m_Material
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 250860113339229744, guid: 6b95230a1eff13a47a54fb99b77e93a0, type: 3}
       propertyPath: m_Name
