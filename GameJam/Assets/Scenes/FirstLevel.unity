@@ -824,6 +824,22 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!58 &1029824446
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029824434}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 1
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.20379543}
+  serializedVersion: 2
+  m_Radius: 0.27392626
 --- !u!1 &1355188807
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,6 +1336,14 @@ PrefabInstance:
     - target: {fileID: 2392080083380612368, guid: 6b95230a1eff13a47a54fb99b77e93a0, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6939444321883306584, guid: 6b95230a1eff13a47a54fb99b77e93a0, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.113880396
+      objectReference: {fileID: 0}
+    - target: {fileID: 6939444321883306584, guid: 6b95230a1eff13a47a54fb99b77e93a0, type: 3}
+      propertyPath: m_Size.y
+      value: 0.6922393
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b95230a1eff13a47a54fb99b77e93a0, type: 3}

@@ -22,7 +22,7 @@ public class PlayerControl : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (Physics2D.Linecast(transform.position, groundCheck.position, 1<<LayerMask.NameToLayer("Ground"))
             || Physics2D.Linecast(transform.position, groundCheckR.position, 1<<LayerMask.NameToLayer("Ground"))
