@@ -73,7 +73,6 @@ GameObject:
   - component: {fileID: 250860113339229743}
   - component: {fileID: 250860113339229741}
   - component: {fileID: 250860113339229738}
-  - component: {fileID: 250860113339229740}
   - component: {fileID: 250860113339229739}
   - component: {fileID: 1349219941412592750}
   - component: {fileID: 6930619976366858165}
@@ -93,7 +92,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250860113339229744}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.09, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 250860113901077417}
@@ -211,22 +210,6 @@ MonoBehaviour:
   _camera: {fileID: 0}
   handFire: {fileID: 549035270450637190}
   unlitFire: {fileID: 3674546864225708524, guid: f145671f22dcc6a45bd30af7ec56cf5f, type: 3}
---- !u!70 &250860113339229740
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 250860113339229744}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 1
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.66, y: 0.92}
-  m_Direction: 0
 --- !u!114 &250860113339229739
 MonoBehaviour:
   m_ObjectHideFlags: 0

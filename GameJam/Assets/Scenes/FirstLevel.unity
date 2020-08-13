@@ -1273,21 +1273,13 @@ PrefabInstance:
       propertyPath: handFire
       value: 
       objectReference: {fileID: 896800133}
-    - target: {fileID: 250860113339229740, guid: 6b95230a1eff13a47a54fb99b77e93a0, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 12e5890ed654b714c96a2ef1b6b08247, type: 2}
-    - target: {fileID: 250860113339229740, guid: 6b95230a1eff13a47a54fb99b77e93a0, type: 3}
-      propertyPath: m_UsedByEffector
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 250860113339229742, guid: 6b95230a1eff13a47a54fb99b77e93a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.46365926
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 250860113339229742, guid: 6b95230a1eff13a47a54fb99b77e93a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.181
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 250860113339229742, guid: 6b95230a1eff13a47a54fb99b77e93a0, type: 3}
       propertyPath: m_LocalPosition.z
