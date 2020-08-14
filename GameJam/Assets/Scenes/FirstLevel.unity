@@ -632,6 +632,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d32e8152ec10774691a544c6dff61f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFree: 0
+  moveSpeed: 0.1
 --- !u!1 &838964734
 GameObject:
   m_ObjectHideFlags: 0
@@ -1273,6 +1275,10 @@ PrefabInstance:
       propertyPath: handFire
       value: 
       objectReference: {fileID: 896800133}
+    - target: {fileID: 250860113339229741, guid: 6b95230a1eff13a47a54fb99b77e93a0, type: 3}
+      propertyPath: _cameraController
+      value: 
+      objectReference: {fileID: 546009681}
     - target: {fileID: 250860113339229742, guid: 6b95230a1eff13a47a54fb99b77e93a0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
