@@ -27,13 +27,17 @@ public class PhantomRoomController : MonoBehaviour
         {
             Debug.Log("Trigger enter");
             SpriteRenderer _playerRenderer = other.GetComponent<SpriteRenderer>();
-            FakeClone = new GameObject("FakeClone");
-            FakeClone.AddComponent<SpriteRenderer>();
-            SpriteRenderer _fakeRenderer = FakeClone.GetComponent<SpriteRenderer>();
-            _fakeRenderer.sprite = _playerRenderer.sprite;
-            _fakeRenderer.maskInteraction = _playerRenderer.maskInteraction;
-
-            SetRelativePosition(FakeClone, other);
+            if (FakeClone == null)
+            {
+                FakeClone = new GameObject("FakeClone");
+                FakeClone.AddComponent<SpriteRenderer>();
+                SpriteRenderer _fakeRenderer = FakeClone.GetComponent<SpriteRenderer>();
+                _fakeRenderer.sprite = _playerRenderer.sprite;
+                _fakeRenderer.maskInteraction = _playerRenderer.maskInteraction;
+    
+            }
+            
+            //SetRelativePosition(FakeClone, other);
         }
     }
 
@@ -47,7 +51,8 @@ public class PhantomRoomController : MonoBehaviour
             {
                 Vector2 _roomPosition = transform.position;
                 //If player got too far into imaginary room, we swap the clone with real character
-                if (Vector2.Distance(rb.position, _roomPosition) < Vector2.Distance(rb.position, _lightLoop.transform.position))
+                if (Vector2.Distance(rb.position, _roomPosition) 
+                    < Vector2.Distance(rb.position, _lightLoop.transform.position))
                 {
                     Vector2 _playerPos = rb.position;
                     rb.position = FakeClone.transform.position;
@@ -57,7 +62,7 @@ public class PhantomRoomController : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (FakeClone)
         {
