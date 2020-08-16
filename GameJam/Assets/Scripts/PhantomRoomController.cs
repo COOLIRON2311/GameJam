@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.UI;
 using UnityEngine;
 
 public class PhantomRoomController : MonoBehaviour
@@ -34,7 +33,6 @@ public class PhantomRoomController : MonoBehaviour
                 SpriteRenderer _fakeRenderer = FakeClone.GetComponent<SpriteRenderer>();
                 _fakeRenderer.sprite = _playerRenderer.sprite;
                 _fakeRenderer.maskInteraction = _playerRenderer.maskInteraction;
-    
             }
             
             //SetRelativePosition(FakeClone, other);
