@@ -31,7 +31,6 @@ public class PlayerControl : MonoBehaviour
             isControlled = !isControlled;
         }
     }
-
     // Update is called once per frame
     void FixedUpdate()
     {
