@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor.UI;
 using UnityEngine;
 
 public class PhantomRoomController : MonoBehaviour
@@ -16,6 +18,24 @@ public class PhantomRoomController : MonoBehaviour
         Transform llTransform = _lightLoop.transform;
         Vector2 position = new Vector2(llTransform.position.x + delta.x, llTransform.position.y + delta.y);
         clone.transform.position = position;
+    }
+
+    private bool PreventCloneCollision(Collider2D other)
+    {
+        Collider2D[] colList = Physics2D.OverlapCircleAll(FakeClone.transform.position, 0.01f);
+        if (colList.Any(x => x.gameObject.layer == 8))
+        {
+            BoxCollider2D[] roomColliders = GetComponents<BoxCollider2D>();
+            foreach (var coll in roomColliders)
+            {
+                if (!coll.isTrigger)
+                {
+                    coll.enabled = true;
+                }
+            }
+            return true;
+        }
+        return false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -34,7 +54,8 @@ public class PhantomRoomController : MonoBehaviour
                 _fakeRenderer.sprite = _playerRenderer.sprite;
                 _fakeRenderer.maskInteraction = _playerRenderer.maskInteraction;
             }
-            
+
+            PreventCloneCollision(other);
             //SetRelativePosition(FakeClone, other);
         }
     }
@@ -43,18 +64,25 @@ public class PhantomRoomController : MonoBehaviour
     {
         if (FakeClone)
         {
-            SetRelativePosition(FakeClone, other);
             Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
-            if (rb != null)
+            if (PreventCloneCollision(other))
             {
-                Vector2 _roomPosition = transform.position;
-                //If player got too far into imaginary room, we swap the clone with real character
-                if (Vector2.Distance(rb.position, _roomPosition) 
-                    < Vector2.Distance(rb.position, _lightLoop.transform.position))
+                
+            }
+            else
+            {
+                SetRelativePosition(FakeClone, other);
+                if (rb != null)
                 {
-                    Vector2 _playerPos = rb.position;
-                    rb.position = FakeClone.transform.position;
-                    FakeClone.transform.position = _playerPos;
+                    Vector2 _roomPosition = transform.position;
+                    //If player got too far into imaginary room, we swap the clone with real character
+                    if (Vector2.Distance(rb.position, _roomPosition)
+                        < Vector2.Distance(rb.position, _lightLoop.transform.position))
+                    {
+                        Vector2 _playerPos = rb.position;
+                        rb.position = FakeClone.transform.position;
+                        FakeClone.transform.position = _playerPos;
+                    }
                 }
             }
         }
@@ -66,6 +94,14 @@ public class PhantomRoomController : MonoBehaviour
         {
             Destroy(FakeClone);
             FakeClone = null;
+        }
+        BoxCollider2D[] roomColliders = GetComponents<BoxCollider2D>();
+        foreach (var coll in roomColliders)
+        {
+            if (!coll.isTrigger)
+            {
+                coll.enabled = false;
+            }
         }
     }
 }
