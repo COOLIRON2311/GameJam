@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
+using static SaveManager;
 
 public class MainMenu : MonoBehaviour
 {
     public void NewGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SaveManager.NewGame();
+        SaveManager.LoadGame();
     }
     public void LoadGame()
     {
-        // TODO: load scene number from a file
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SaveManager.LoadGame();
     }
 
     public void ExitGame()
