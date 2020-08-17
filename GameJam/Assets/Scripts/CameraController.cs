@@ -25,15 +25,15 @@ public class CameraController : MonoBehaviour
     private void Start()
     {
         //_rigidbody2D = GetComponent<Rigidbody2D>();
-        _camera = GetComponent<Camera>();
+        _camera = GetComponent<Camera>();;
         isFree = false;
         z = transform.position.z;
     }
 
     private bool IsInBorder(Vector2 pos, float width, float height)
     {
-        float halfwidth = width; // 2;
-        float halfheight = height; // 2;
+        float halfwidth = width;
+        float halfheight = height;
         if (pos.x - halfwidth <= leftBorder.position.x)
             return false;
         if (pos.x + halfwidth >= rightBorder.position.x)
@@ -44,7 +44,6 @@ public class CameraController : MonoBehaviour
             return false;
         return true;
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -73,17 +72,11 @@ public class CameraController : MonoBehaviour
 
             Vector2 pos = new Vector2(transform.position.x, transform.position.y);
             Vector2 delta = new Vector2(deltaX, deltaY);
-            float k = 0.005f;
-            if (IsInBorder(pos + delta, _camera.pixelWidth * k, _camera.pixelHeight * k))
+            float k = (float)_camera.pixelWidth / _camera.pixelHeight;
+            if (IsInBorder(pos + delta, _camera.orthographicSize * k, _camera.orthographicSize))
             {
-                Debug.Log("true");
                 transform.Translate(deltaX, deltaY, 0);
             }
-            else
-            {
-                Debug.Log("false");
-            }
-
 
 
             /*if (isInBorder)
