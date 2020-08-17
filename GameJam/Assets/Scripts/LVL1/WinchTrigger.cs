@@ -11,12 +11,7 @@ public class WinchTrigger : Interactable
     // Start is called before the first frame update
     void Start()
     {
-        /*Animator left = BridgeLeft.GetComponent<Animator>();
-        Animator right = BridgeRight.GetComponent<Animator>();
-
-        left.Play("Base Layer.BridgeDescend");
-        right.Play("BridgeDescend");
-        Debug.Log("NEW");*/
+    
     }
 
     // Update is called once per frame
