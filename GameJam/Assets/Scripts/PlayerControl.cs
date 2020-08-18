@@ -16,10 +16,12 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Transform groundCheckR;
     [SerializeField] private Transform groundCheckL;
+    private Animator _animator;
     private bool isControlled;
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
         isControlled = true;
     }
 
@@ -38,7 +40,12 @@ public class PlayerControl : MonoBehaviour
             || Physics2D.Linecast(transform.position, groundCheckR.position, 1<<LayerMask.NameToLayer("Ground"))
             || Physics2D.Linecast(transform.position, groundCheckL.position, 1<<LayerMask.NameToLayer("Ground")))
         {
+            if (!isOnGround)
+            {
+                StartCoroutine(Land());
+            }
             isOnGround = true;
+            _animator.SetBool("isOnJump", false);
         }
         else
         {
@@ -81,18 +88,27 @@ public class PlayerControl : MonoBehaviour
             if (Input.GetKey(KeyCode.Space) && isOnGround)
             {
                 velosityY = jumpSpeed;
+                _animator.SetBool("isOnJump", true);
+            }
+            else
+            {
+                _animator.SetFloat("velosityX", velosityX);
             }
 
-        
-            //Debug.Log(velosityX);
-            //position = new Vector2(position.x + deltaX, position.y);
-            //_rigidbody2D.position = position;
             _rigidbody2D.velocity = new Vector2(velosityX, velosityY);    
         }
         else
         {
             _cameraController.isFree = true; //free camera
         }
+    }
+
+    IEnumerator Land()
+    {
+        _animator.SetBool("isLanding", true);
         
+        yield return new WaitForSeconds(0.1f);
+        
+        _animator.SetBool("isLanding", false);
     }
 }
