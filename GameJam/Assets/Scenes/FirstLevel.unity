@@ -1086,9 +1086,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.48346215}
+  m_Offset: {x: 0, y: -0.5776097}
   serializedVersion: 2
-  m_Radius: 0.31161833
+  m_Radius: 0.23361051
 --- !u!95 &1029824447
 Animator:
   serializedVersion: 3
@@ -13062,15 +13062,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 250860113339229742, guid: 6b95230a1eff13a47a54fb99b77e93a0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 250860113339229742, guid: 6b95230a1eff13a47a54fb99b77e93a0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 250860113339229742, guid: 6b95230a1eff13a47a54fb99b77e93a0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 250860113339229742, guid: 6b95230a1eff13a47a54fb99b77e93a0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13112,6 +13112,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 4004125669443401021, guid: 68b17c4a1dbdbc147b8a8962088ce99b, type: 3}
+    - target: {fileID: 250860113339229745, guid: 6b95230a1eff13a47a54fb99b77e93a0, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 250860113901077416, guid: 6b95230a1eff13a47a54fb99b77e93a0, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -13130,11 +13134,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6939444321883306584, guid: 6b95230a1eff13a47a54fb99b77e93a0, type: 3}
       propertyPath: m_Offset.y
-      value: 0.27218604
+      value: 0.12962008
       objectReference: {fileID: 0}
     - target: {fileID: 6939444321883306584, guid: 6b95230a1eff13a47a54fb99b77e93a0, type: 3}
       propertyPath: m_Size.y
-      value: 1.0088506
+      value: 1.2939825
       objectReference: {fileID: 0}
     - target: {fileID: 6939444321883306584, guid: 6b95230a1eff13a47a54fb99b77e93a0, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x

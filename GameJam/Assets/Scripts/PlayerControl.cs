@@ -17,11 +17,13 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private Transform groundCheckR;
     [SerializeField] private Transform groundCheckL;
     private Animator _animator;
+    private SpriteRenderer _spriteRenderer;
     private bool isControlled;
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         isControlled = true;
     }
 
@@ -77,11 +79,13 @@ public class PlayerControl : MonoBehaviour
        
             if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
+                _spriteRenderer.flipX = false;
                 velosityX = speed;
             }
 
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
+                _spriteRenderer.flipX = true;
                 velosityX = -speed;
             }
         
@@ -92,7 +96,7 @@ public class PlayerControl : MonoBehaviour
             }
             else
             {
-                _animator.SetFloat("velosityX", velosityX);
+                _animator.SetFloat("velosityX", Math.Abs(velosityX));
             }
 
             _rigidbody2D.velocity = new Vector2(velosityX, velosityY);    
