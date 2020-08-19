@@ -48,10 +48,12 @@ public class PlayerControl : MonoBehaviour
             }
             isOnGround = true;
             _animator.SetBool("isOnJump", false);
+            _animator.SetBool("isFalling", false);
         }
         else
         {
             isOnGround = false;
+            _animator.SetBool("isFalling", true);
         }
 
         if (isControlled)
