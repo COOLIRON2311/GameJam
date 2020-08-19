@@ -7,14 +7,14 @@ using UnityEngine.UI;
 public class NPC : MonoBehaviour
 {
     [SerializeField] State startingState;
-   State state;
-   GameObject Canvas;
-   GameObject button1;
-   GameObject button2;
+    State state;
+    GameObject Canvas;
+    GameObject button1;
+    GameObject button2;
 
-   [SerializeField] Text button1text;
+    [SerializeField] Text button1text;
     [SerializeField] Text button2text; 
-   [SerializeField] Text textComponent;
+    [SerializeField] Text textComponent;
 
     void Start()
     {
@@ -25,9 +25,8 @@ public class NPC : MonoBehaviour
         SetScene();
     }
 
-private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
         Canvas.SetActive(true);
         textComponent.text = state.GetStateStory();
     }
