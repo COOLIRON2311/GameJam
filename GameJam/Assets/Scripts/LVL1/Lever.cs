@@ -10,7 +10,7 @@ public class Lever : Interactable
     {
         foreach (Interactable interaction in lever_interactions)
         {
-            interaction.Activate(player);
+            interaction.Activate(this.gameObject);
         }
 
         return true;
