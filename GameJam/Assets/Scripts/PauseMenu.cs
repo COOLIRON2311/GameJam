@@ -20,6 +20,13 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            //No pause while dead
+            DeathMenu dm = GetComponent<DeathMenu>();
+            if (dm && dm.PlayerDead)
+            {
+                return;
+            }
+
             if (Paused)
             {
                 Resume();
