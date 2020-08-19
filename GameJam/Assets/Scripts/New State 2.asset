@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff7a01a45ec5b524893b49993ab93b4b, type: 3}
   m_Name: New State 2
   m_EditorClassIdentifier: 
-  storyText: dslfksl;fksl;
-  nextStates: []
-  Buttons: []
-  end: 1
+  storyText: ...
+  nextStates:
+  - {fileID: 11400000, guid: d0116906853530a49b14161ad5c09bae, type: 2}
+  Buttons:
+  - ...
+  end: 0

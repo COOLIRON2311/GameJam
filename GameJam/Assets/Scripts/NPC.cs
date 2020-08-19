@@ -9,14 +9,20 @@ public class NPC : MonoBehaviour
     [SerializeField] State startingState;
    State state;
    GameObject Canvas;
-   GameObject Button1;
+   GameObject button1;
+   GameObject button2;
+
+   [SerializeField] Text button1text;
+    [SerializeField] Text button2text; 
    [SerializeField] Text textComponent;
 
     void Start()
     {
-        Button1 = GameObject.Find("Button");
+        button1 = GameObject.Find("Button");
+        button2 = GameObject.Find("Button2");
         Canvas = GameObject.Find("DialogueSystem");
         state = startingState;
+        SetScene();
     }
 
 private void OnCollisionEnter2D(Collision2D collision)
@@ -26,8 +32,24 @@ private void OnCollisionEnter2D(Collision2D collision)
         textComponent.text = state.GetStateStory();
     }
     
+    public void SetScene()
+    {
+        if (state.Buttons.Length == 1)
+        {
+            button2.SetActive(false);
+            button1text.text = state.Buttons[0];
+        }
+        else if (state.Buttons.Length == 2)
+        {
+            button2.SetActive(true);
+            button1text.text = state.Buttons[0];
+            button2text.text = state.Buttons[1];            
+        }
+    }
+
     public void FirstButton()
     { 
+       
         var nextStates = state.GetNextStates();
         state = nextStates[0];
         textComponent.text = state.GetStateStory();
@@ -35,10 +57,11 @@ private void OnCollisionEnter2D(Collision2D collision)
         {
             Canvas.SetActive(false);
         }
-        //SetScene();
+         SetScene();
+        
     }
     public void SecondButton()
-    { 
+    {  
         var nextStates = state.GetNextStates();
         state = nextStates[1];
         textComponent.text = state.GetStateStory();
@@ -46,7 +69,8 @@ private void OnCollisionEnter2D(Collision2D collision)
         {
             Canvas.SetActive(false);
         }
-        //SetScene();
+        SetScene();
+       
     }
 
 }

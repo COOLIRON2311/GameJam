@@ -12,12 +12,10 @@ public class State : ScriptableObject
     [SerializeField] public string[] Buttons;
     [SerializeField] public bool end;
 
-
     public string GetStateStory()
     {
         return storyText;
     }
-
     public State[] GetNextStates()
     {
         return nextStates;
