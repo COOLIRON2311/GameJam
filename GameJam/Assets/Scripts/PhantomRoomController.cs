@@ -53,6 +53,7 @@ public class PhantomRoomController : MonoBehaviour
                 SpriteRenderer _fakeRenderer = FakeClone.GetComponent<SpriteRenderer>();
                 _fakeRenderer.sprite = _playerRenderer.sprite;
                 _fakeRenderer.maskInteraction = _playerRenderer.maskInteraction;
+                _fakeRenderer.sortingLayerName = _playerRenderer.sortingLayerName; //Sorting layer for light and such stuff
             }
 
             PreventCloneCollision(other);

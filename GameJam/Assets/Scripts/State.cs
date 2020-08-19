@@ -11,6 +11,7 @@ public class State : ScriptableObject
     [SerializeField] State[] nextStates;
     [SerializeField] public string[] Buttons;
     [SerializeField] public bool end;
+    [SerializeField] public int Portrait;
 
     public string GetStateStory()
     {
@@ -21,6 +22,10 @@ public class State : ScriptableObject
         return nextStates;
     }
 
+    public int GetPortrait()
+    {
+        return Portrait;
+    }
     public bool IsEnd()
     {
         if (end)

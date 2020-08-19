@@ -16,10 +16,14 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Transform groundCheckR;
     [SerializeField] private Transform groundCheckL;
+    private Animator _animator;
+    private SpriteRenderer _spriteRenderer;
     private bool isControlled;
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         isControlled = true;
     }
 
@@ -38,11 +42,18 @@ public class PlayerControl : MonoBehaviour
             || Physics2D.Linecast(transform.position, groundCheckR.position, 1<<LayerMask.NameToLayer("Ground"))
             || Physics2D.Linecast(transform.position, groundCheckL.position, 1<<LayerMask.NameToLayer("Ground")))
         {
+            if (!isOnGround)
+            {
+                StartCoroutine(Land());
+            }
             isOnGround = true;
+            _animator.SetBool("isOnJump", false);
+            _animator.SetBool("isFalling", false);
         }
         else
         {
             isOnGround = false;
+            _animator.SetBool("isFalling", true);
         }
 
         if (isControlled)
@@ -70,29 +81,40 @@ public class PlayerControl : MonoBehaviour
        
             if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
+                _spriteRenderer.flipX = false;
                 velosityX = speed;
             }
 
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
+                _spriteRenderer.flipX = true;
                 velosityX = -speed;
             }
         
             if (Input.GetKey(KeyCode.Space) && isOnGround)
             {
                 velosityY = jumpSpeed;
+                _animator.SetBool("isOnJump", true);
+            }
+            else
+            {
+                _animator.SetFloat("velosityX", Math.Abs(velosityX));
             }
 
-        
-            //Debug.Log(velosityX);
-            //position = new Vector2(position.x + deltaX, position.y);
-            //_rigidbody2D.position = position;
             _rigidbody2D.velocity = new Vector2(velosityX, velosityY);    
         }
         else
         {
             _cameraController.isFree = true; //free camera
         }
+    }
+
+    IEnumerator Land()
+    {
+        _animator.SetBool("isLanding", true);
         
+        yield return new WaitForSeconds(0.1f);
+        
+        _animator.SetBool("isLanding", false);
     }
 }

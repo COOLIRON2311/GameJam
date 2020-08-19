@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class FireSpawner : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class FireSpawner : MonoBehaviour
     [SerializeField] private Camera _camera;
     [SerializeField] private GameObject handFire;
     [SerializeField] private GameObject unlitFire;
+    [SerializeField] private Light2D handFireLight;
     private GameObject _fire;
     private CameraController _cameraController;
     private bool _hasFire;
@@ -45,6 +47,8 @@ public class FireSpawner : MonoBehaviour
                     //Set sprite visible only inside the mask (the mask itself is in the fire prefab)
                     SpriteRenderer _playerRenderer = Player.GetComponent<SpriteRenderer>();
                     _playerRenderer.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
+                    //Light
+                    handFireLight.enabled = false;
                 }
             }
             else if (!_isFireOnGround)
@@ -83,6 +87,9 @@ public class FireSpawner : MonoBehaviour
             //TO REVIEW: overall approach sucks, screen border should mask the sprite by itself 
             SpriteRenderer _playerRenderer = Player.GetComponent<SpriteRenderer>();
             _playerRenderer.maskInteraction = SpriteMaskInteraction.None;
+            
+            //Light
+            handFireLight.enabled = true;
         }
     }
 }

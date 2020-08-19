@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -9,15 +10,40 @@ public class CameraController : MonoBehaviour
     
     private GameObject following;
 
+    private Camera _camera;
+    //private Rigidbody2D _rigidbody2D;
+
     public bool isFree;
     public float moveSpeed = 0.1f;
+    
+    //camera borders
+    [SerializeField] private Transform leftBorder;
+    [SerializeField] private Transform rightBorder;
+    [SerializeField] private Transform upBorder;
+    [SerializeField] private Transform downBorder;
 
     private void Start()
     {
+        //_rigidbody2D = GetComponent<Rigidbody2D>();
+        _camera = GetComponent<Camera>();;
         isFree = false;
         z = transform.position.z;
     }
 
+    private bool IsInBorder(Vector2 pos, float width, float height)
+    {
+        float halfwidth = width;
+        float halfheight = height;
+        if (pos.x - halfwidth <= leftBorder.position.x)
+            return false;
+        if (pos.x + halfwidth >= rightBorder.position.x)
+            return false;
+        if (pos.y - halfheight <= downBorder.position.y)
+            return false;
+        if (pos.y + halfheight >= upBorder.position.y)
+            return false;
+        return true;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -43,8 +69,27 @@ public class CameraController : MonoBehaviour
             {
                 deltaX = -moveSpeed;
             }
-            
-            transform.Translate(deltaX, deltaY, 0);
+
+            Vector2 pos = new Vector2(transform.position.x, transform.position.y);
+            Vector2 delta = new Vector2(deltaX, deltaY);
+            float k = (float)_camera.pixelWidth / _camera.pixelHeight;
+            if (IsInBorder(pos + delta, _camera.orthographicSize * k, _camera.orthographicSize))
+            {
+                transform.Translate(deltaX, deltaY, 0);
+            }
+
+
+            /*if (isInBorder)
+            {
+                _rigidbody2D.velocity = new Vector2(deltaX, deltaY);    
+            }
+            else
+            {
+                _rigidbody2D.velocity = Vector2.zero;
+                _rigidbody2D.position = _rigidbody2D.position - 
+                                        new Vector2(deltaX, deltaY);
+                isInBorder = true;
+            }*/
         }
         else
         {
