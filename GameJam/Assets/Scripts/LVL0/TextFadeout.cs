@@ -19,10 +19,8 @@ public class TextFadeout : MonoBehaviour
         if (player)
         {
             float dist = Vector2.Distance(gameObject.transform.parent.position, player.transform.position);
-            Debug.Log(dist);
             if (dist < 5)
             {
-                Debug.Log("here");
                 Text t = GetComponent<Text>();
                 Color color = t.color;
                 color.a = 1-dist/5;
