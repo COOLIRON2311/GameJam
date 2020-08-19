@@ -966,7 +966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264ddafdeaf3a7c418c2e1718ec87ea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingState: {fileID: 0}
+  startingState: {fileID: 11400000, guid: be47897dc4bfec94bab6e3e30cccf374, type: 2}
   button1text: {fileID: 1258717651}
   button2text: {fileID: 944737224}
   textComponent: {fileID: 968933356}
@@ -1092,7 +1092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264ddafdeaf3a7c418c2e1718ec87ea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingState: {fileID: 0}
+  startingState: {fileID: 11400000, guid: 626ad263da23bc74a894fbe0db619ee3, type: 2}
   button1text: {fileID: 1258717651}
   button2text: {fileID: 944737224}
   textComponent: {fileID: 968933356}

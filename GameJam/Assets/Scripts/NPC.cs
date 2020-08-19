@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class NPC : MonoBehaviour
 {
     [SerializeField] State startingState;
+   
    State state;
    GameObject Canvas;
    GameObject button1;
@@ -22,15 +23,20 @@ public class NPC : MonoBehaviour
         button2 = GameObject.Find("Button2");
         Canvas = GameObject.Find("DialogueSystem");
         state = startingState;
-        SetScene();
+        //SetScene();
     }
 
-private void OnCollisionEnter2D(Collision2D collision)
+    public State GiveMeState()
+    {
+        return state;
+    }
+
+ private void OnCollisionEnter2D(Collision2D collision)
     {
         
         Canvas.SetActive(true);
         textComponent.text = state.GetStateStory();
-    }
+    } 
     
     public void SetScene()
     {
@@ -45,7 +51,7 @@ private void OnCollisionEnter2D(Collision2D collision)
             button1text.text = state.Buttons[0];
             button2text.text = state.Buttons[1];            
         }
-    }
+    } 
 
     public void FirstButton()
     { 
@@ -71,6 +77,6 @@ private void OnCollisionEnter2D(Collision2D collision)
         }
         SetScene();
        
-    }
+    } 
 
 }
