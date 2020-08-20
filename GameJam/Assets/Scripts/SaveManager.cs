@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public static class SaveManager
 {
-    private static readonly string path = "Assets/savedgame";
+    private static readonly string path = "Saves/savegame";
     public static int SavedSpawnPoint = 1;
     public static int SavedScene = 1; 
 
