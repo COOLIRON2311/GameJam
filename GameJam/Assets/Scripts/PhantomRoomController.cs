@@ -40,30 +40,34 @@ public class PhantomRoomController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
-        LightLoopInteracor lli = other.GetComponent<LightLoopInteracor>();
-        if (lli != null && rb != null)
+        if (other.gameObject.GetComponent<PlayerControl>() != null)
         {
-            Debug.Log("Trigger enter");
-            SpriteRenderer _playerRenderer = other.GetComponent<SpriteRenderer>();
-            if (FakeClone == null)
+            Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
+            LightLoopInteracor lli = other.GetComponent<LightLoopInteracor>();
+            if (lli != null && rb != null)
             {
-                FakeClone = new GameObject("FakeClone");
-                FakeClone.AddComponent<SpriteRenderer>();
-                SpriteRenderer _fakeRenderer = FakeClone.GetComponent<SpriteRenderer>();
-                _fakeRenderer.sprite = _playerRenderer.sprite;
-                _fakeRenderer.maskInteraction = _playerRenderer.maskInteraction;
-                _fakeRenderer.sortingLayerName = _playerRenderer.sortingLayerName; //Sorting layer for light and such stuff
-            }
+                Debug.Log("Trigger enter");
+                SpriteRenderer _playerRenderer = other.GetComponent<SpriteRenderer>();
+                if (FakeClone == null)
+                {
+                    FakeClone = new GameObject("FakeClone");
+                    FakeClone.AddComponent<SpriteRenderer>();
+                    SpriteRenderer _fakeRenderer = FakeClone.GetComponent<SpriteRenderer>();
+                    _fakeRenderer.sprite = _playerRenderer.sprite;
+                    _fakeRenderer.maskInteraction = _playerRenderer.maskInteraction;
+                    _fakeRenderer.sortingLayerName = _playerRenderer.sortingLayerName; //Sorting layer for light and such stuff
+                }
 
-            PreventCloneCollision(other);
-            //SetRelativePosition(FakeClone, other);
+                SetRelativePosition(FakeClone, other);
+                PreventCloneCollision(other);
+                //
+            }
         }
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (FakeClone)
+        if (FakeClone && other.gameObject.GetComponent<PlayerControl>() != null)
         {
             Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
             if (PreventCloneCollision(other))
@@ -91,17 +95,20 @@ public class PhantomRoomController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (FakeClone)
+        if (other.gameObject.GetComponent<PlayerControl>() != null)
         {
-            Destroy(FakeClone);
-            FakeClone = null;
-        }
-        BoxCollider2D[] roomColliders = GetComponents<BoxCollider2D>();
-        foreach (var coll in roomColliders)
-        {
-            if (!coll.isTrigger)
+            if (FakeClone)
             {
-                coll.enabled = false;
+                Destroy(FakeClone);
+                FakeClone = null;
+            }
+            BoxCollider2D[] roomColliders = GetComponents<BoxCollider2D>();
+            foreach (var coll in roomColliders)
+            {
+                if (!coll.isTrigger)
+                {
+                    coll.enabled = false;
+                }
             }
         }
     }

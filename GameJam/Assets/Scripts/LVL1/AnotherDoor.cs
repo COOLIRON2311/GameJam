@@ -6,7 +6,7 @@ public class AnotherDoor : Interactable
 {
     public override bool Activate(GameObject player)
     {
-        Lever lever = player.GetComponent<Lever>();
+        LeverOneWay lever = player.GetComponent<LeverOneWay>();
         if (lever)
         {
             Destroy(this.gameObject);
