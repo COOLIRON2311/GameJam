@@ -25,6 +25,10 @@ public class Door : Interactable
             Destroy(gameObject);
             return true;
         }
+        else
+        {
+            PopUpMessage.ShowPopUpMessage("Кажется, нужен ключ...");
+        }
         return false;
     }
 }

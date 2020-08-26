@@ -35,6 +35,10 @@ public class WinchTrigger : Interactable
             Debug.Log("NEW");
             return true;
         }
+        else
+        {
+            PopUpMessage.ShowPopUpMessage("У этой лебёдки чего-то не хватает...");
+        }
         return false;
     }
 }
